@@ -4,20 +4,40 @@ import Tasks.Meeting;
 import Tasks.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 public class TodosTest {
-   /* @Test
+    /* @Test
+     public void shouldAddThreeTasksOfDifferentType() {
+         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+
+        // String subtasks = { "Молоко", "Яйца", "Хлеб" };
+         Epic epic = new Epic(55, "Молоко");
+
+         Meeting meeting = new Meeting(
+                 555,
+                 "Выкатка 3й версии приложения",
+                 "Приложение НетоБанка",
+                 "Во вторник после обеда"
+         );
+
+         Todos todos = new Todos();
+
+         todos.add(simpleTask);
+         todos.add(epic);
+         todos.add(meeting);
+
+         Task[] expected = { simpleTask, epic, meeting };
+         Task[] actual = todos.findAll();
+         Assertions.assertArrayEquals(expected, actual);
+     }*/
+    @Test
     public void shouldAddThreeTasksOfDifferentType() {
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
 
-       // String subtasks = { "Молоко", "Яйца", "Хлеб" };
-        Epic epic = new Epic(55, "Молоко");
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+        Epic epic = new Epic(55, "subtasks");
 
-        Meeting meeting = new Meeting(
-                555,
-                "Выкатка 3й версии приложения",
-                "Приложение НетоБанка",
-                "Во вторник после обеда"
-        );
+        Meeting meeting = new Meeting(555, "Выкатка 3й версии приложения", "Приложение НетоБанка", "Во вторник после обеда");
 
         Todos todos = new Todos();
 
@@ -25,45 +45,17 @@ public class TodosTest {
         todos.add(epic);
         todos.add(meeting);
 
-        Task[] expected = { simpleTask, epic, meeting };
+        Task[] expected = {simpleTask, epic, meeting};
         Task[] actual = todos.findAll();
         Assertions.assertArrayEquals(expected, actual);
-    }*/
-   @Test
-   public void shouldAddThreeTasksOfDifferentType() {
-       SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+    }
 
-       String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
-       Epic epic = new Epic(55, "subtasks");
-
-       Meeting meeting = new Meeting(
-               555,
-               "Выкатка 3й версии приложения",
-               "Приложение НетоБанка",
-               "Во вторник после обеда"
-       );
-
-       Todos todos = new Todos();
-
-       todos.add(simpleTask);
-       todos.add(epic);
-       todos.add(meeting);
-
-       Task[] expected = { simpleTask, epic, meeting };
-       Task[] actual = todos.findAll();
-       Assertions.assertArrayEquals(expected, actual);
-   }
     @Test
     public void searchAddElement() {
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
         Epic epic = new Epic(55, "Молоко");
 
-        Meeting meeting = new Meeting(
-                555,
-                "Выкатка 3й версии приложения",
-                "Приложение НетоБанка",
-                "Во вторник после обеда"
-        );
+        Meeting meeting = new Meeting(555, "Выкатка 3й версии приложения", "Приложение НетоБанка", "Во вторник после обеда");
 
         Todos todos = new Todos();
 
@@ -76,17 +68,13 @@ public class TodosTest {
         Task[] actual = todos.search("Молоко");
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void searchNotAddElement() {
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
         Epic epic = new Epic(55, "Молоко");
 
-        Meeting meeting = new Meeting(
-                555,
-                "Выкатка 3й версии приложения",
-                "Приложение НетоБанка",
-                "Во вторник после обеда"
-        );
+        Meeting meeting = new Meeting(555, "Выкатка 3й версии приложения", "Приложение НетоБанка", "Во вторник после обеда");
 
         Todos todos = new Todos();
 
@@ -100,6 +88,7 @@ public class TodosTest {
         Task[] actual = todos.search("Хлеб");
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldShowThatTheElementIsNotAdded() {
         Todos todos = new Todos();
