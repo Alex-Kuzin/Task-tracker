@@ -33,13 +33,39 @@ public class TasksTest {
     public void equals4() {
         Epic epic = new Epic(55, "Молоко");
         SimpleTask simpleTask = new SimpleTask(55, "Позвонить родителям");
-        epic.equals(epic);
+
 
 
         boolean expected = false;
         boolean actual = simpleTask.equals(epic);
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void equals5() {;
+        Epic epic = new Epic(55, "Молоко");
+        Epic epic2 = new Epic(58, "Молоко");
+        boolean expected = false;
+        boolean actual = epic.equals(epic2);
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void equals6() {;
+        Epic epic = new Epic(55, "Молоко");
+        Epic epic2 = new Epic(55, "Молоко");
+        boolean expected = true;
+        boolean actual = epic.equals(epic2);
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void equals7() {;
+        Todos epic = new Todos();
+        Epic epic2 = new Epic(55, "Молоко");
+        boolean expected = false;
+        boolean actual = epic2.equals(null);
+        Assertions.assertEquals(expected, actual);
+    }
+
+
     @Test
     public void callGetterTask() {
         Epic epic = new Epic(55, "Молоко");
